@@ -1,5 +1,7 @@
 import { Router } from 'express';
 import { pool } from './config/database';
+import collectionsRoutes from "./routes/collectionsRoutes"
+
 const router = Router();
 
 router.get('/', async (req, res) => {
@@ -11,5 +13,7 @@ router.get('/', async (req, res) => {
     res.status(500).json({ error: 'Erro ao conectar com o banco' });
   }
 });
+router.use("/collections", collectionsRoutes)
+
 
 export { router };
